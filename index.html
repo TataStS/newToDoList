@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase-firestore.js"></script>
+</head>
+<body>
+<main>
+    <div class="head">
+        <img id="logo" src="images/clock.png" alt="clock">
+        <h1>To Do List</h1>
+    </div>
+    <div class="form">
+        <form class="form-list" id="add-tasks-form"><br>
+            <input id="text" required  type="text" name="name" placeholder="name"><br>
+            <input type="datetime-local" required  name="date" value="" placeholder="date"><br>
+            <textarea name="description" placeholder="description"></textarea><br>
+            <input type="text" name="location" placeholder="location"><br>
+            <button id="addTask">add new task</button>
+            <br>
+        </form>
+    </div>
+    <hr>
+    <div class="selectList">
+        <p>Sort Tasks By:
+            <select name="choozeTask" id="selectTasks">
+                <option value="description">Description</option>
+                <option value="name">Name</option>
+                <option value="date">Date</option>
+                <!--<option id='alfa' value="Alphabet">Alphabet</option>-->
+                <!--<option value="Near Me">Near Me</option>-->
+            </select>
+        </p>
+        <input type="text" class="search" value="" placeholder="Search by name">
+        <input class="dateSearch" type="date">
+    </div>
+
+    <div class="out">
+
+        <ul id="tasks-list">
+
+        </ul>
+
+    </div>
+</main>
+
+<div class="modal" id="myModal">
+    <div class="edit-formModal" id="edit-form">
+        <form class="form-list" id="edit-add-tasks-form"><br>
+            <input id="edit-text" required  type="text" name="name" placeholder="name"><br>
+            <input id="edit-date" type="datetime-local"  required  name="date"  placeholder="date"><br>
+            <textarea id="edit-description" name="description" placeholder="description"></textarea><br>
+            <input id="edit-location" type="text" name="location" placeholder="location"><br>
+            <button id="save">save</button>
+            <br>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAqg2ii3fUqKj9zUPDd1fyo1R062N7fbmA",
+        authDomain: "todolist-63312.firebaseapp.com",
+        databaseURL: "https://todolist-63312.firebaseio.com",
+        projectId: "todolist-63312",
+        storageBucket: "todolist-63312.appspot.com",
+        messagingSenderId: "8537384668"
+    };
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true });
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>
